@@ -50,14 +50,14 @@ Here are some example commands you can use in the HBNB Console:
 
 - To create a new instance:
 
-  create <class name>
+  'create <class name>'
 
   ```
   create BaseModel
   ```
 
 - To show details of an instance:
-  show <class name>
+  'show <class name>'
 
   ```
   show BaseModel 12345
@@ -65,7 +65,7 @@ Here are some example commands you can use in the HBNB Console:
 
 - To update attributes of an instance:
 
-  update <class name> <id> <attribute name> "<attribute value>"
+  'update <class name> <id> <attribute name> "<attribute value>"'
 
   ```
   update BaseModel 12345 name "New Name"
@@ -73,7 +73,7 @@ Here are some example commands you can use in the HBNB Console:
 
 - To delete an instance:
 
-  destroy <class name> <id>
+  "'destroy <class name> <id>'
 
   ```
   destroy BaseModel 12345
@@ -88,7 +88,8 @@ Here are some example commands you can use in the HBNB Console:
 - Specific commands eg show, all, count and destroy can also be run in .(dot) format ie:
 
 - To display a list of all instances:
-  <class name>.all()
+
+  '<class name>.all()'
 
   ```
   BaseModel.all()
@@ -96,7 +97,7 @@ Here are some example commands you can use in the HBNB Console:
 
 - To count the number of instances:
 
-  <class name>.count()
+  '<class name>.count()'
 
   ```
   BaseModel.count()
@@ -104,7 +105,7 @@ Here are some example commands you can use in the HBNB Console:
 
 - To retrieve an instance based on its ID:
 
-  <class name>.show(<id>)
+  '<class name>.show(<id>)'
 
   ```
   BaseModel.show(12345)
@@ -112,7 +113,7 @@ Here are some example commands you can use in the HBNB Console:
 
 - To update an instance based on its ID:
 
-  <class name>.update(<id>, <attribute name>, <attribute value>)
+  '<class name>.update(<id>, <attribute name>, <attribute value>)'
 
   ```
   BaseModel.update(12345, "first_name", "Juan")
