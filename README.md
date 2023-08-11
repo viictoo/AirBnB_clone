@@ -2,7 +2,7 @@
 
 # HBNB Console
 
-The **HBNB Console** is a command-line tool(CLI) that allows you to interact with the various models and data of the programme. It provides a command-line interface to manage instances of various classes through a persistent storage system. This tool is primarily designed to allow interaction with objects in the programme where they can be created, displayed, updated, and deleted.
+The **HBNB Console** is a command-line tool(CLI) that allows you to interact with the various models and data of the HBNB programme. It provides a command-line interface to manage instances of various classes through a persistent storage system. This tool is primarily designed to allow interaction with objects in the programme where they can be created, displayed, updated, and deleted.
 
 ![Layout](https://github.com/viictoo/AirBnB_clone/blob/main/images/layout.png)
 
@@ -50,11 +50,14 @@ Here are some example commands you can use in the HBNB Console:
 
 - To create a new instance:
 
+  create <class name>
+
   ```
   create BaseModel
   ```
 
 - To show details of an instance:
+  show <class name>
 
   ```
   show BaseModel 12345
@@ -62,11 +65,15 @@ Here are some example commands you can use in the HBNB Console:
 
 - To update attributes of an instance:
 
+  update <class name> <id> <attribute name> "<attribute value>"
+
   ```
   update BaseModel 12345 name "New Name"
   ```
 
 - To delete an instance:
+
+  destroy <class name> <id>
 
   ```
   destroy BaseModel 12345
@@ -78,18 +85,41 @@ Here are some example commands you can use in the HBNB Console:
   all
   ```
 
-- Specific commands eg show, all, count and destroy can also be run in . format eg:
+- Specific commands eg show, all, count and destroy can also be run in .(dot) format ie:
+
 - To display a list of all instances:
+  <class name>.all()
+
   ```
   BaseModel.all()
   ```
+
 - To count the number of instances:
+
+  <class name>.count()
 
   ```
   BaseModel.count()
   ```
 
+- To retrieve an instance based on its ID:
+
+  <class name>.show(<id>)
+
+  ```
+  BaseModel.show(12345)
+  ```
+
+- To update an instance based on its ID:
+
+  <class name>.update(<id>, <attribute name>, <attribute value>)
+
+  ```
+  BaseModel.update(12345, "first_name", "Juan")
+  ```
+
 - To exit the console:
+
   ```
   quit
   ```
