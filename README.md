@@ -1,6 +1,10 @@
+![Project Logo](https://github.com/viictoo/AirBnB_clone/blob/main/images/logo.png)
+
 # HBNB Console
 
 The **HBNB Console** is a command-line tool(CLI) that allows you to interact with the various models and data of the programme. It provides a command-line interface to manage instances of various classes through a persistent storage system. This tool is primarily designed to allow interaction with objects in the programme where they can be created, displayed, updated, and deleted.
+
+![Layout](https://github.com/viictoo/AirBnB_clone/blob/main/images/layout.png)
 
 ## Features
 
