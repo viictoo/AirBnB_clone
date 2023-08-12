@@ -14,19 +14,17 @@ from models.base_model import BaseModel
 class FileStorage:
     '''FileStorage performs serialization and deserilization'''
 
-    def __init__(self):
-        '''The initializer function'''
-        self.__file_path = 'file.json'
-        self.__objects = {}
-        self.all_classes = {
-            "BaseModel": BaseModel,
-            "User": User,
-            "Place": Place,
-            "Amenity": Amenity,
-            "City": City,
-            "Review": Review,
-            "State": State
-        }
+    __file_path = 'file.json'
+    __objects = {}
+    all_classes = {
+        "BaseModel": BaseModel,
+        "User": User,
+        "Place": Place,
+        "Amenity": Amenity,
+        "City": City,
+        "Review": Review,
+        "State": State
+    }
 
     def all(self):
         '''Return all objects of the class'''
