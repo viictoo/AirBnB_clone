@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import os
 import copy
+import uuid
 import unittest
 from unittest.mock import patch
 from datetime import datetime
@@ -12,10 +13,12 @@ class TestBaseModel(unittest.TestCase):
     @classmethod
     def setUp(cls):
         cls.base_model = BaseModel()
+        cls.base_model2 = BaseModel()
 
     @classmethod
     def tearDown(cls):
         del cls.base_model
+        del cls.base_model2
         if os.path.exists("file.json"):
             os.remove("file.json")
 
@@ -133,6 +136,24 @@ class TestBaseModel(unittest.TestCase):
 
         all_objs = mock_storage.all()
         self.assertIn(self.base_model.id, all_objs)
+
+    def test_class_docs(self):
+        """Test ``BaseModel`` class for documentation"""
+        self.assertIsNotNone(BaseModel.__doc__)
+
+    def test_method_docstring(self):
+        """Test methods in ``BaseModel`` for documentation"""
+        methods = [
+            BaseModel.__init__,
+            BaseModel.__str__,
+            BaseModel.save,
+            BaseModel.to_dict,
+        ]
+        for m in methods:
+            self.assertIsNotNone(m.__doc__)
+
+        self.assertTrue(uuid.UUID(self.base_model.id))
+        self.assertNotEqual(self.base_model.id, self.base_model2.id)
 
 
 if __name__ == "__main__":
