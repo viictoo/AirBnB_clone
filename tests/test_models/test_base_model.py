@@ -36,6 +36,14 @@ class TestBaseModel(unittest.TestCase):
         self.assertTrue(hasattr(self.base_model, "created_at"))
         self.assertTrue(hasattr(self.base_model, "updated_at"))
 
+    def test_type_attributes(self):
+        """_summary_
+        """
+        bass = BaseModel()
+        self.assertTrue(type(bass.id), str)
+        self.assertTrue(type(bass.created_at), datetime)
+        self.assertTrue(type(bass.updated_at), datetime)
+
     def test_class_docstring(self):
         '''Tests class for docstring '''
         self.assertIsNotNone(BaseModel.__doc__)
