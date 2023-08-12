@@ -214,7 +214,20 @@ class HBNBCommand(cmd.Cmd):
             match = re.match(r'^(\S+)\.update\("?(.+)"?,\s*(\{.+\})\)$', input)
             class_name = match.group(1)
             instance_id = my_strip(match.group(2))
-            if (instance_id) not in storage.all().keys():
+            # if (instance_id) not in storage.all().keys():
+            #     print("** no instance found **")
+            #     return
+            if len(class_name) == 0:
+                print("** class name missing **")
+                return
+            elif my_strip(class_name) not in HBNBCommand.classes:
+                print("** class doesn't exist **")
+                return
+            elif len(instance_id) == 0:
+                print("** instance id missing **")
+                return
+            elif (f'{my_strip(class_name)}.{instance_id}')\
+                    not in storage.all().keys():
                 print("** no instance found **")
                 return
             # print(type(match.group(3)))
