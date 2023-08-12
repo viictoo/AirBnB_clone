@@ -103,6 +103,9 @@ class TestFileStorage(unittest.TestCase):
             self.assertEqual(reloaded_instance.to_dict(),
                              instance.to_dict())
 
+    def test_class_doc(self):
+        self.assertIsNotNone(FileStorage.__doc__)
+
 
 if __name__ == '__main__':
     unittest.main()
