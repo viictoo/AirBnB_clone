@@ -124,9 +124,13 @@ class TestFileStorage(unittest.TestCase):
         self.assertIsNotNone(FileStorage.__doc__)
 
     def test_module_d(self):
+        """_summary_
+        """
         self.assertIsNotNone(models.engine.file_storage.__doc__)
 
     def test_clas(self):
+        """_summary_
+        """
         self.assertIsNotNone(FileStorage.__doc__)
 
     def test_initial_attr(self):
