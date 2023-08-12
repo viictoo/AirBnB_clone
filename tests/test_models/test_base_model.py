@@ -199,6 +199,5 @@ class TestBaseModel(unittest.TestCase):
         self.assertNotEqual(self.base_model.id, self.base_model2.id)
 
 
-
 if __name__ == "__main__":
     unittest.main()

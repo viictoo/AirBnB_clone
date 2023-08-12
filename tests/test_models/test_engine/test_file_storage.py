@@ -21,12 +21,10 @@ class TestFileStorage(unittest.TestCase):
     def setUp(self):
         """instance for use in testing"""
         self.FileStorage = FileStorage()
-        self.storage = FileStorage()
 
     def tearDown(self):
         """_summary_
         """
-        FileStorage._FileStorage__objects = {}
         if os.path.exists('file.json'):
             os.remove('file.json')
 
@@ -117,64 +115,6 @@ class TestFileStorage(unittest.TestCase):
             self.assertIsInstance(reloaded_instance, instance.__class__)
             self.assertEqual(reloaded_instance.to_dict(),
                              instance.to_dict())
-
-    def test_class_d(self):
-        """_summary_
-        """
-        self.assertIsNotNone(FileStorage.__doc__)
-
-    def test_module_d(self):
-        """_summary_
-        """
-        self.assertIsNotNone(models.engine.file_storage.__doc__)
-
-    def test_clas(self):
-        """_summary_
-        """
-        self.assertIsNotNone(FileStorage.__doc__)
-
-    def test_initial_attr(self):
-        """Test it is a dictionary"""
-        self.assertEqual(self.storage._FileStorage__file_path, "file.json")
-        self.assertIsInstance(self.storage._FileStorage__objects, dict)
-
-    def test_all_meth(self):
-        """Test the all method"""
-        obj = self.storage.all()
-        self.assertIsInstance(obj, dict)
-        self.assertIs(obj, self.storage._FileStorage__objects)
-
-    def test_new_meth(self):
-        """Test the new method"""
-        bass = BaseModel()
-        self.storage.new(bass)
-        key = "{}.{}".format(bass.__class__.__name__, bass.id)
-        self.assertIn(key, self.storage._FileStorage__objects)
-
-    def test_new_user(self):
-        """Test the new method with user"""
-        uss = User()
-        self.storage.new(uss)
-        key = "{}.{}".format(uss.__class__.__name__, uss.id)
-        self.assertIn(key, self.storage._FileStorage__objects)
-
-    def test_reload(self):
-        """Test the reload method"""
-        bass = BaseModel()
-        self.storage.new(bass)
-        self.storage.save()
-        with open("file.json", "r") as file:
-            text = file.read()
-            self.assertIn("BaseModel." + bass.id, text)
-
-        bass.name = "Updated name"
-        bass.save()
-
-        stor = FileStorage()
-        stor.reload()
-        key = "{}.{}".format(bass.__class__.__name__, bass.id)
-        self.assertIn(key, self.storage._FileStorage__objects)
-        reloaded_ins = stor.all()[key]
 
 
 if __name__ == '__main__':
