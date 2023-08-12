@@ -4,6 +4,7 @@
 import os
 import copy
 import uuid
+import models
 import unittest
 from unittest.mock import patch
 from datetime import datetime
@@ -183,6 +184,7 @@ class TestBaseModel(unittest.TestCase):
     def test_class_docs(self):
         """Test ``BaseModel`` class for documentation"""
         self.assertIsNotNone(BaseModel.__doc__)
+        self.assertIsNotNone(models.base_model.__doc__)
 
     def test_method_docstring(self):
         """Test methods in ``BaseModel`` for documentation"""

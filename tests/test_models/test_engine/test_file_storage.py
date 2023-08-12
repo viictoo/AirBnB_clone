@@ -33,6 +33,7 @@ class TestFileStorage(unittest.TestCase):
         """
         self.assertIsNotNone(FileStorage.__doc__)
         self.assertNotEqual(FileStorage.__doc__, "")
+        self.assertIsNotNone(models.engine.file_storage.__doc__)
 
     def test_all_returns_dict_type(self):
         """test that created object is a dictionary"""
