@@ -21,10 +21,12 @@ class TestFileStorage(unittest.TestCase):
     def setUp(self):
         """instance for use in testing"""
         self.FileStorage = FileStorage()
+        self.storage = FileStorage()
 
     def tearDown(self):
         """_summary_
         """
+        FileStorage._FileStorage__objects = {}
         if os.path.exists('file.json'):
             os.remove('file.json')
 
