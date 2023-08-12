@@ -155,6 +155,78 @@ class TestBaseModel(unittest.TestCase):
         self.assertTrue(uuid.UUID(self.base_model.id))
         self.assertNotEqual(self.base_model.id, self.base_model2.id)
 
+    def test_initial_attribute(self):
+        """Test object id"""
+        basemodels = BaseModel()
+        basemodels2 = BaseModel()
+
+        self.assertTrue(hasattr(basemodels, "id"))
+        self.assertIsNotNone(basemodels.id)
+        self.assertIsInstance(basemodels.id, str)
+
+        self.assertTrue(uuid.UUID(basemodels.id))
+
+        self.assertNotEqual(basemodels.id, basemodels2.id)
+
+        self.assertTrue(hasattr(basemodels, "created_at"))
+        self.assertIsNotNone(basemodels.created_at)
+        self.assertIsInstance(basemodels.created_at, datetime)
+
+        self.assertTrue(hasattr(basemodels, "updated_at"))
+        self.assertIsNotNone(basemodels.updated_at)
+        self.assertIsInstance(basemodels.updated_at, datetime)
+
+        self.assertTrue(hasattr(basemodels, "__class__"))
+        self.assertIsNotNone(basemodels.__class__)
+        self.assertIsInstance(basemodels.__class__, object)
+
+        arg_test = BaseModel("args")
+        self.assertNotIn("args", arg_test.__dict__)
+
+        str_ = "[BaseModel] ({}) {}".format(basemodels.id, basemodels.__dict__)
+        self.assertEqual(str(basemodels), str_)
+
+        elders = basemodels.updated_at
+        basemodels.save()
+        self.assertGreater(basemodels.updated_at, elders)
+
+    def test_kwargs(self):
+        """Test ``BaseModel`` initialization with kwargs"""
+        my_dic = {
+            "id": "test_id",
+            "created_at": "2023-08-09T12:34:56.789012",
+            "updated_at": "2023-08-09T13:45:12.345678",
+            "name": "lls",
+            "value": 42,
+        }
+        test_model = BaseModel(**my_dic)
+
+        self.assertEqual(test_model.id, "test_id")
+        self.assertEqual(test_model.name, "lls")
+        self.assertEqual(test_model.value, 42)
+        self.assertIsInstance(test_model.created_at, datetime)
+        self.assertIsInstance(test_model.updated_at, datetime)
+
+    def test_to_dict_data_type(self):
+        """Test each data type after ``to_dict``"""
+        test_model = BaseModel()
+        test_model.name = "bah"
+        test_model.age = "ol"
+        test_model.num = 12
+        test_model.float_num = 12.21
+        test_model.bool_val = True
+
+        test_dict = test_model.to_dict()
+
+        self.assertIsInstance(test_dict, dict)
+        self.assertEqual(test_dict["__class__"], "BaseModel")
+        self.assertEqual(test_dict["id"], test_model.id)
+        self.assertEqual(test_dict["name"], "bah")
+        self.assertEqual(test_dict["age"], "ol")
+        self.assertEqual(test_dict["num"], 12)
+        self.assertEqual(test_dict["float_num"], 12.21)
+        self.assertEqual(test_dict["bool_val"], True)
+
 
 if __name__ == "__main__":
     unittest.main()
