@@ -8,6 +8,7 @@ from models.engine.file_storage import FileStorage
 import copy
 from unittest.mock import patch
 from models.base_model import BaseModel
+import models
 
 
 class TestUser(unittest.TestCase):
@@ -25,6 +26,7 @@ class TestUser(unittest.TestCase):
     def test_docstring(self):
         '''Tests for the docstring of the class'''
         self.assertIsNotNone(Amenity.__doc__)
+        self.assertIsNotNone(models.amenity.__doc__)
 
     def test_amenity_instances(self):
         '''Tests for the obj of the class'''

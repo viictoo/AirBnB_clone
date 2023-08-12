@@ -5,6 +5,7 @@ import unittest
 from models.place import Place
 from unittest.mock import patch
 from models.base_model import BaseModel
+import models
 
 
 class TestPlace(unittest.TestCase):
@@ -20,6 +21,9 @@ class TestPlace(unittest.TestCase):
 
     def test_docstring(self):
         self.assertIsNotNone(Place.__doc__)
+
+    def test_module_doc(self):
+        self.assertIsNotNone(models.place.__doc__)
 
     def test_has_all_attributes(self):
         self.assertTrue(hasattr(self.my_place, 'city_id'))
@@ -54,6 +58,12 @@ class TestPlace(unittest.TestCase):
         self.assertEqual(a['__class__'], 'Place')
         self.assertEqual(a['id'], self.my_place.id)
         self.assertEqual(a['created_at'], self.my_place.created_at.isoformat())
+
+    def test_attribute_longitude(self):
+        place = Place()
+        self.assertTrue(hasattr(place, "longitude"))
+        self.assertEqual(place.longitude, 0.0)
+        self.assertTrue(type(place.longitude) == float)
 
 
 if __name__ == '__main__':
