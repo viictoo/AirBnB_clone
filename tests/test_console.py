@@ -1,32 +1,31 @@
 #!/usr/bin/python3
 '''Test Console Module'''
 
-from console import HBNBCommand
-from unittest.mock import create_autospec, patch
-from uuid import UUID
+import io
+import sys
+import json
 import models
 import console
 import unittest
 import pycodestyle
-import sys
-import io
-import json
 from os import remove
+from uuid import UUID
 from os.path import isfile
-from models.base_model import BaseModel
 from datetime import datetime
 from io import StringIO as SIO
+from console import HBNBCommand
+from models.base_model import BaseModel
+from unittest.mock import create_autospec, patch
+
 
 class TestConsole(unittest.TestCase):
     """unit tests for the console
     """
-
     def setUp(self):
         """set up test tools
         """
         self.SimIn = HBNBCommand()
         self.out = SIO()
-
 
     def tearDown(self):
         """destroy created test elements
@@ -78,7 +77,6 @@ class TestConsole(unittest.TestCase):
             self.assertFalse(self.SimIn.onecmd("create BaseModel again"))
             self.assertEqual("** class doesn't exist **\n", SimOut.getvalue())
 
-
     def test_create_success(self):
         models.storage._FileStorage__objects.clear()
         with patch('sys.stdout', SIO()) as SimOut:
@@ -123,7 +121,8 @@ class TestConsole(unittest.TestCase):
         """test quit command."""
         with patch('sys.stdout', SIO()) as SimOut:
             self.SimIn.onecmd("''.show()")
-            self.assertEqual("*** Unknown syntax: ''.show()\n", SimOut.getvalue())
+            self.assertEqual(
+                "*** Unknown syntax: ''.show()\n", SimOut.getvalue())
             SimOut.truncate(0)
             SimOut.seek(0)
             self.assertFalse(self.SimIn.onecmd("ModelDoesNotExist.show(id)"))
@@ -138,22 +137,22 @@ class TestConsole(unittest.TestCase):
             self.assertEqual("** no instance found **\n", SimOut.getvalue())
             SimOut.truncate(0)
             SimOut.seek(0)
-            self.assertFalse(self.SimIn.onecmd("BaseModel.show(this is a long input)"))
+            self.assertFalse(self.SimIn.onecmd(
+                "BaseModel.show(this is a long input)"))
             self.assertEqual("** no instance found **\n", SimOut.getvalue())
 
     def test_show_success(self):
         with patch('sys.stdout', SIO()) as SimOut:
             # Create an instance of Place
             self.SimIn.onecmd('create Place')
-            output = SimOut.getvalue().strip()  # Get the output containing the instance ID
+            output = SimOut.getvalue().strip()
 
             # Extract the instance ID from the output
             instance_id = output
 
         with patch('sys.stdout', SIO()) as SimOut:
-            # Use the show command to display the details of the created instance
             self.SimIn.onecmd(f'show Place {instance_id}')
-            show_output = SimOut.getvalue().strip()  # Get the output from the show command
+            show_output = SimOut.getvalue().strip()
 
             # Check if the output contains the expected attributes
             self.assertTrue(show_output.startswith("[Place"))
@@ -178,16 +177,17 @@ class TestConsole(unittest.TestCase):
             self.assertIn("'created_at': datetime.datetime", show_output)
             self.assertIn("'updated_at': datetime.datetime", show_output)
 
-
     def test_destroy_error(self):
         """test destroy command."""
         models.storage._FileStorage__objects.clear()
         with patch('sys.stdout', SIO()) as SimOut:
             self.SimIn.onecmd("''.destroy()")
-            self.assertEqual("*** Unknown syntax: ''.destroy()\n", SimOut.getvalue())
+            self.assertEqual(
+                "*** Unknown syntax: ''.destroy()\n", SimOut.getvalue())
             SimOut.truncate(0)
             SimOut.seek(0)
-            self.assertFalse(self.SimIn.onecmd("ModelDoesNotExist.destroy(id)"))
+            self.assertFalse(self.SimIn.onecmd(
+                "ModelDoesNotExist.destroy(id)"))
             self.assertEqual("** class doesn't exist **\n", SimOut.getvalue())
             SimOut.truncate(0)
             SimOut.seek(0)
@@ -214,31 +214,29 @@ class TestConsole(unittest.TestCase):
         with patch('sys.stdout', SIO()) as SimOut:
             # Create an instance of Place
             self.SimIn.onecmd('create Place')
-            instance_id = SimOut.getvalue().strip()  # Get the output containing the instance ID
+            instance_id = SimOut.getvalue().strip()
             SimOut.truncate(0)
             SimOut.seek(0)
             self.SimIn.onecmd('create Place')
-            instance2_id = SimOut.getvalue().strip()  # Get the output containing the instance ID
+            instance2_id = SimOut.getvalue().strip()
             SimOut.truncate(0)
             SimOut.seek(0)
             # Extract the instance ID from the output
 
         with patch('sys.stdout', SIO()) as SimOut:
-            # Use the show command to display the details of the created instance
             self.SimIn.onecmd(f'destroy Place {instance_id}')
             SimOut.truncate(0)
             SimOut.seek(0)
             self.SimIn.onecmd(f'show Place {instance_id}')
-            show_output = SimOut.getvalue().strip()  # Get the output from the show command
+            show_output = SimOut.getvalue().strip()
             self.assertEqual("** no instance found **", show_output)
             SimOut.truncate(0)
             SimOut.seek(0)
-            # Use the show command to display the details of the created instance
             self.SimIn.onecmd(f'Place.destroy({instance2_id})')
             SimOut.truncate(0)
             SimOut.seek(0)
             self.SimIn.onecmd(f'Place.show({instance2_id})')
-            show_output2 = SimOut.getvalue().strip()  # Get the output from the show command
+            show_output2 = SimOut.getvalue().strip()
             self.assertEqual("** no instance found **", show_output2)
 
     def test_all(self):
@@ -275,7 +273,8 @@ class TestConsole(unittest.TestCase):
             SimOut.seek(0)
             self.SimIn.onecmd("This FakeModel.all()")
             output = SimOut.getvalue()
-            self.assertEqual("*** Unknown syntax: This FakeModel.all()\n", output)
+            self.assertEqual(
+                "*** Unknown syntax: This FakeModel.all()\n", output)
 
         with patch('sys.stdout', SIO()) as SimOut:
             models.storage._FileStorage__objects.clear()
@@ -339,7 +338,8 @@ class TestConsole(unittest.TestCase):
     def test_count(self):
         with patch('sys.stdout', SIO()) as SimOut:
             self.SimIn.onecmd("count FakeModel")
-            self.assertEqual("*** Unknown syntax: count FakeModel\n", SimOut.getvalue())
+            self.assertEqual(
+                "*** Unknown syntax: count FakeModel\n", SimOut.getvalue())
 
         with patch('sys.stdout', SIO()) as SimOut:
             models.storage._FileStorage__objects.clear()
@@ -359,7 +359,8 @@ class TestConsole(unittest.TestCase):
     def test_count_error(self):
         with patch('sys.stdout', SIO()) as SimOut:
             self.SimIn.onecmd("count FakeModel")
-            self.assertEqual("*** Unknown syntax: count FakeModel\n", SimOut.getvalue())
+            self.assertEqual(
+                "*** Unknown syntax: count FakeModel\n", SimOut.getvalue())
 
         with patch('sys.stdout', SIO()) as SimOut:
             models.storage._FileStorage__objects.clear()
@@ -420,15 +421,18 @@ class TestConsole(unittest.TestCase):
             SimOut.truncate(0)
             SimOut.seek(0)
             self.SimIn.onecmd(f'update')
-            self.assertEqual('** class name missing **\n', SimOut.getvalue())
+            self.assertEqual(
+                '** class name missing **\n', SimOut.getvalue())
             SimOut.truncate(0)
             SimOut.seek(0)
             self.SimIn.onecmd(f'update User')
-            self.assertEqual('** instance id missing **\n', SimOut.getvalue())
+            self.assertEqual(
+                '** instance id missing **\n', SimOut.getvalue())
             SimOut.truncate(0)
             SimOut.seek(0)
             self.SimIn.onecmd(f'update User {userId}')
-            self.assertEqual('** attribute name missing **\n', SimOut.getvalue())
+            self.assertEqual(
+                '** attribute name missing **\n', SimOut.getvalue())
             SimOut.truncate(0)
             SimOut.seek(0)
             self.SimIn.onecmd(f'update User 101 "name" "Maximus"')
@@ -439,7 +443,8 @@ class TestConsole(unittest.TestCase):
             self.assertEqual('** value missing **\n', SimOut.getvalue())
             SimOut.truncate(0)
             SimOut.seek(0)
-            self.SimIn.onecmd(f'update User, {userId}, "Weight", 100 "Age" "old"')
+            self.SimIn.onecmd(
+                f'update User, {userId}, "Weight", 100 "Age" "old"')
             self.assertEqual("** class doesn't exist **\n", SimOut.getvalue())
             SimOut.truncate(0)
             SimOut.seek(0)
@@ -460,27 +465,32 @@ class TestConsole(unittest.TestCase):
             SimOut.truncate(0)
             SimOut.seek(0)
             self.SimIn.onecmd(f'.update')
-            self.assertEqual('*** Unknown syntax: .update\n', SimOut.getvalue())
+            self.assertEqual(
+                '*** Unknown syntax: .update\n', SimOut.getvalue())
             SimOut.truncate(0)
             SimOut.seek(0)
             self.SimIn.onecmd(f'User.update')
-            self.assertEqual('*** Unknown syntax: User.update\n', SimOut.getvalue())
+            self.assertEqual(
+                '*** Unknown syntax: User.update\n', SimOut.getvalue())
             SimOut.truncate(0)
             SimOut.seek(0)
             self.SimIn.onecmd(f'User.update()')
-            self.assertEqual('*** Unknown syntax: User.update()\n', SimOut.getvalue())
+            self.assertEqual(
+                '*** Unknown syntax: User.update()\n', SimOut.getvalue())
             SimOut.truncate(0)
             SimOut.seek(0)
             self.SimIn.onecmd("User.update(125)")
             self.assertEqual('** no instance found **\n', SimOut.getvalue())
             SimOut.truncate(0)
             SimOut.seek(0)
-            self.SimIn.onecmd("User.update(125, {'sum': 'count', 'muliply':'product'})")
+            self.SimIn.onecmd(
+                "User.update(125, {'sum': 'count', 'muliply':'product'})")
             self.assertEqual('** no instance found **\n', SimOut.getvalue())
             SimOut.truncate(0)
             SimOut.seek(0)
             self.assertFalse(self.SimIn.onecmd(f'User.update({userId})'))
-            self.assertEqual("** attribute name missing **\n", SimOut.getvalue())
+            self.assertEqual(
+                "** attribute name missing **\n", SimOut.getvalue())
             SimOut.truncate(0)
             SimOut.seek(0)
             self.SimIn.onecmd('User.update("11", "greeting")')
@@ -503,10 +513,10 @@ class TestConsole(unittest.TestCase):
             self.assertEqual('** value missing **\n', SimOut.getvalue())
             SimOut.truncate(0)
             SimOut.seek(0)
-            self.SimIn.onecmd(f'User.update({userId}, {"greeting", "Jambo", "100"})')
+            self.SimIn.onecmd(
+                f'User.update({userId}, {"greeting", "Jambo", "100"})')
             self.assertEqual('', SimOut.getvalue())
             # self.assertRaises(TypeError)
-
 
     def test_update_dictionary(self):
         """test update attributes success"""
@@ -517,7 +527,8 @@ class TestConsole(unittest.TestCase):
             userId = SimOut.getvalue()
             SimOut.truncate(0)
             SimOut.seek(0)
-            self.SimIn.onecmd("Place.update("+userId+", {'Age': 100, 'Heritage': old'}")
+            self.SimIn.onecmd("Place.update\
+                              ("+userId+", {'Age': 100, 'Heritage': old'}")
             self.assertIn("Heritage", SimOut.getvalue())
             self.assertIn("Age", SimOut.getvalue())
             self.assertIn("old", SimOut.getvalue())
