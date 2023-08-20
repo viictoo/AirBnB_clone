@@ -1,0 +1,19 @@
+/* Footer styles */
+footer {
+    background-color: #00FF00;
+    height: 60px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  footer p {
+    margin: 0;
+    color: rgb(15, 15, 15);
+    width: 100%;
+  }

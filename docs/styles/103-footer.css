@@ -1,0 +1,26 @@
+/* Footer styles */
+footer {
+  /* Dark background for better contrast */
+  background-color: #333;
+  /* White text for better contrast */
+  color: #fff;
+  padding: 10px 0;
+  width: 100%;
+  /* Darker border for contrast */
+  border-top: 1px solid #666;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  footer {
+    font-size: 14px;
+  }
+}

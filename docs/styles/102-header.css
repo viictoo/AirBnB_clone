@@ -1,0 +1,42 @@
+header {
+  background-color: white;
+  height: 70px;
+  width: 100%;
+  border-bottom: 1px solid #cccccc;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  max-width: 100%;
+  width: 100%;
+  height: 100%;
+  background-image: url("../images/logo.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-left: 20px;
+}
+@media (max-width: 600px) {
+
+    header {
+        height:50px;
+        background-size: 40px;
+        width: 100%;
+    }
+    .logo {
+        height: 40px;
+        margin-left: 30%;
+        width: 100%;
+    }
+  }
+  /* phablet */
+@media (max-width: 768px) {
+
+    header {
+        height:50px;
+        width: 100%;
+    }
+    .logo {
+        width: 100%;
+    }
+  }
