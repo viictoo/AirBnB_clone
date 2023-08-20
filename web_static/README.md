@@ -1,1 +1,49 @@
-0-index.html 1-index.html 2-index.html styles/2-common.css styles/2-header.css styles/2-footer.css 3-index.html styles/3-common.css styles/3-header.css styles/3-footer.css images/ 4-index.html styles/4-common.css styles/3-header.css styles/3-footer.css styles/4-filters.css images/ 5-index.html styles/4-common.css styles/3-header.css styles/3-footer.css styles/5-filters.css images/ 6-index.html styles/4-common.css styles/3-header.css styles/3-footer.css  styles/6-filters.css images/ 7-index.html styles/4-common.css styles/3-header.css styles/3-footer.css styles/6-filters.css styles/7-places.css images/ 8-index.html styles/4-common.css styles/3-header.css styles/3-footer.css styles/6-filters.css styles/8-places.css images/ 100-index.html styles/4-common.css styles/3-header.css styles/3-footer.css styles/6-filters.css styles/ 100-places.css images/ 102-index.html styles/102-common.css styles/102-header.css styles/102-footer.css styles/102-filters.css styles/102-places.css images/ 103-index.html styles/103-common.css styles/103-header.css styles/103-footer.css styles/103-filters.css styles/103-places.css images/
+# AirBnB Clone (Hbnb) Static Web Page
+
+This is a static web page inspired by AirBnB. The web page provides information about different places for rent.
+
+## Table of Contents
+
+- [Web Page Overview](#web-page-overview)
+- [Accessibility Features](#accessibility-features)
+- [Color Contrast](#color-contrast)
+- [Keyboard Navigation](#keyboard-navigation)
+- [Screen Reader Support](#screen-reader-support)
+- [Responsive Design](#responsive-design)
+- [Contributors](#contributors)
+
+## Web Page Overview
+
+### Header
+- The header of the web page contains the hbnb logo.
+
+### Filters
+- The filters section provides options for users to filter properties based on locations and amenities.
+- Users can expand location and amenity filters by hovering over them.
+- The filters are designed with accessibility in mind, allowing users to navigate them effectively using a keyboard or screen reader.
+
+### Places
+- The main content of the web page displays information about different places available for rent.
+- Each place is presented in an article format, showcasing details such as the type of property, price per night, maximum guest capacity, number of rooms, number of bathrooms, owner's name, description, and a list of amenities and reviews.
+- Accessibility features have been implemented to improve the user experience for people with disabilities.
+
+### Footer
+- The footer provides basic information about the website.
+
+## Accessibility Features
+
+### Color Contrast
+
+- Careful consideration has been given to color choices to ensure good color contrast. This makes it easier for users with visual impairments to read content.
+
+### Keyboard Navigation
+
+- The web page can be navigated using only the keyboard, making it accessible for users who rely on keyboard input.
+
+### Screen Reader Support
+
+- All images, icons, and buttons include descriptive alt text, making the content accessible to users who rely on screen readers.
+
+### Responsive Design
+
+- The web page is designed to be responsive, adapting to different screen sizes and ensuring a consistent user experience across devices.

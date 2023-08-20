@@ -289,3 +289,53 @@ article:hover div.reviews {
   height: 10px;
   width: 10px;
 }
+
+@media (max-width: 1000px) {
+  .places h1 {
+    margin: 0;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    padding: 0;
+    font-size: 25px;
+  }
+  .places article {
+    /* background-color: aquamarine; */
+    font-size: 14px;
+    margin: 10px;
+  }
+  .places h2 {
+    text-align: center;
+    font-size: 28px;
+  }
+  .places .reviews h2 {
+    text-align: left;
+  }
+  .places .price_by_night {
+    /* background-color: green; */
+    text-align: center;
+    /* size-adjust: 50%; */
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    /* size: 20px; */
+    /* width: 5%; */
+    /* height: 10%; */
+  }
+  div.information {
+    /* width: 100%; */
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    align-content: center;
+    flex-direction: row;
+  }
+  .places .amenities,
+  .places .reviews {
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 14px;
+    margin-top: 30px;
+    /* background-color: red; */
+  }
+}

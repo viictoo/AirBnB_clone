@@ -134,8 +134,8 @@ article:hover div.reviews {
 .reviews h2 {
   text-align: left;
   /* Adjusted font size for better readability */
-    font-size: 18px;
-    /* Lighter border for better contrast */
+  font-size: 18px;
+  /* Lighter border for better contrast */
   border-bottom: 1px solid #dddddd;
   margin: 0px;
   padding-bottom: 10px;
@@ -205,7 +205,6 @@ article:hover div.reviews {
   margin-right: 20px;
   background-color: #fff;
 }
-
 
 .places .amenities li {
   padding-left: 20px;
