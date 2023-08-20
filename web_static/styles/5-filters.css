@@ -1,0 +1,73 @@
+/* Filter section styles */
+.filters {
+    background-color: rgb(255, 255, 255);
+    height: 70px;
+    width: 100%;
+    border: 1px solid #DDDDDD;
+    /* display: flex; */
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 0 15px;
+    position: relative;
+    text-align: center;
+  }
+
+  /* Locations and Amenities filters */
+  .locations,
+  .amenities {
+    height: 100%;
+    width: 25%;
+    padding: 0 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  .locations {
+    border-right: 1px solid #DDDDDD;
+}
+  .locations h3,
+  .amenities h3 {
+    font-weight: 600;
+    margin-bottom: 0;
+    margin-top: 5%;
+  }
+
+  .locations h4,
+  .amenities h4 {
+    font-weight: 400;
+    font-size: 14px;
+    margin-top: 1%;
+    margin-bottom: 1%;
+  }
+
+  /* Search button styles */
+  .search-button {
+    font-size: 18px;
+    background-color: #FF5A5F;
+    color: #FFFFFF;
+    height: 48px;
+    width: 20%;
+    border: 0;
+    /* border: 1px; */
+    border-radius: 4px;
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+    cursor: pointer;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    float: right;
+    margin: 11px 30px;
+  }
+
+  .search-button:hover {
+    opacity: 0.9;
+  }
+
+/* locate amenities part left of center */
+.locations,
+.amenities {
+    float: left;
+}
+
