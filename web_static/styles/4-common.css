@@ -10,7 +10,7 @@ body {
   .page-content {
     position: relative;
     min-height: calc(100vh - 130px); /* 70px header + 60px footer */
-    padding-top: 30px;
+    padding-top: 0px;
   }
 
   .container {
@@ -18,8 +18,4 @@ body {
     margin: auto;
     margin-top: 30px;
     margin-bottom: 30px;
-  }
-
-  .flexible-space {
-    flex: 1;
   }

@@ -1,3 +1,14 @@
+.places {
+  display: flex;
+  align-content: start;
+  flex-flow: row wrap;
+  align-items: inherit;
+  justify-content: space-around;
+}
+.places h1 {
+  font-size: 30px;
+  width: 100%;
+}
 article {
   width: 390px;
   padding: 20px;
@@ -9,16 +20,13 @@ article {
 }
 
 article h2 {
-  /* background-color: violet; */
   font-size: 30px;
   margin-top: 0px;
   margin-bottom: 50px;
-  /* background-color: aqua; */
   text-align: center;
 }
 
 div.price_by_night {
-  /* background-color: blue; */
   color: #ff5a5f;
   border: 4px solid #ff5a5f;
   border-radius: 100%;
@@ -31,16 +39,16 @@ div.price_by_night {
   position: absolute;
   top: 20px;
   right: 20px;
-  /* line-height: 60px; */
-  /* text-align: center; */
-  /* float: right; */
-  /* top: -80px; */
+
 }
 
 div.information {
   height: 80px;
   border-top: 1px solid #dddddd;
   border-bottom: 1px solid #dddddd;
+  display: flex;
+  align-content: center;
+  justify-content: space-around;
 }
 div.max_guest,
 div.number_rooms,
@@ -78,79 +86,46 @@ div.description {
 }
 
 .places .amenities {
-  display: none;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  font-size: 16px;
-  text-align: left;
-  margin-top: 40px;
-  width: 100%;
-  position: relative;
-  /* background-color: red; */
-}
-
-/* SIZE EACH IMAGE TO BE UNIFORM */
-
-div.reviews {
-  display: none;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  font-size: 16px;
-  text-align: left;
-  margin-top: 40px;
-  width: 100%;
-  position: relative;
-}
-
-/* .places .amenities h2,
-  div.reviews h2{
-
-    border-bottom: #DDDDDD 1px solid;
- } */
-
-article:hover div.amenities,
-article:hover div.reviews {
   display: block;
   flex-direction: row;
   justify-content: flex-start;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  text-align: left;
+  margin-top: 40px;
+  width: 100%;
+  height: fit-content;
+  position: relative;
 }
-/* GET DIFFERENT IMAGE FOR EACH LIST ITEM */
-/* "../images/icon_tv.png"*/
-/* "../images/icon_wifi.png"*/
-/* "../images/icon_pets.png"*/
 
-/* .tv, .wifi, .pets{
-    background-image: url("../images/icon_bath.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    margin-right: 10px;
-    height: 20px;
-    width: 20px;
-    background-position: left;
-} */
-.places {
-  display: flex;
-  align-content: start;
-  flex-flow: row wrap;
-  align-items: flex-start;
-  justify-content: space-around;
+div.reviews {
+  display: block;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  text-align: left;
+  margin-top: 40px;
+  width: 100%;
+  position: relative;
 }
+
 .places .grid {
   display: flex;
-  flex-flow: row;
+  flex-flow: row wrap;
   justify-content: space-around;
-  align-items: flex-start;
-  align-content: flex-start;
 }
 
 .places article {
   position: relative;
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
 }
 
 .places h1 {
   font-size: 30px;
-  width: 100%;
 }
 
 .places .amenities h2,
@@ -223,11 +198,6 @@ article:hover div.reviews {
   margin-right: 20px;
 }
 
-/* .amenities ul {
-  list-style: none;
-  padding: 10;
-} */
-
 .places .amenities li {
   padding-left: 30px;
   background-repeat: no-repeat;
@@ -239,9 +209,6 @@ article:hover div.reviews {
 
 .tv {
   background-image: url("../images/icon_tv.png");
-  /* width: 5px; */
-  /* height: 5px;
-}*/
 }
 
 .amenities .wifi {
@@ -290,6 +257,7 @@ article:hover div.reviews {
   width: 10px;
 }
 
+
 @media (max-width: 1000px) {
   .places h1 {
     margin: 0;
@@ -299,7 +267,6 @@ article:hover div.reviews {
     font-size: 25px;
   }
   .places article {
-    /* background-color: aquamarine; */
     font-size: 14px;
     margin: 10px;
   }
@@ -311,19 +278,12 @@ article:hover div.reviews {
     text-align: left;
   }
   .places .price_by_night {
-    /* background-color: green; */
     text-align: center;
-    /* size-adjust: 50%; */
     top: 10px;
     right: 10px;
     font-size: 20px;
-    /* size: 20px; */
-    /* width: 5%; */
-    /* height: 10%; */
   }
   div.information {
-    /* width: 100%; */
-    /* background-color: red; */
     display: flex;
     align-items: center;
     align-content: center;
@@ -336,6 +296,5 @@ article:hover div.reviews {
     margin-bottom: 5px;
     font-size: 14px;
     margin-top: 30px;
-    /* background-color: red; */
   }
 }

@@ -1,35 +1,32 @@
 .places {
-  text-align: center;
-  display: block;
+  display: flex;
+  align-content: start;
+  flex-flow: row wrap;
+  align-items: inherit;
+  justify-content: space-around;
 }
-
 .places h1 {
-  text-align: left;
   font-size: 30px;
-  margin: auto;
-  margin-top: 20px;
-  margin-left: 20px;
+  width: 100%;
 }
-
 article {
   width: 390px;
   padding: 20px;
   margin: 20px;
   border: 1px solid #ff5a5f;
   border-radius: 4px;
-  display: inline-block;
   vertical-align: top;
   min-height: 200px;
 }
 
 article h2 {
-  /* background-color: violet; */
   font-size: 30px;
-  margin-top: 5px;
+  margin-top: 0px;
+  margin-bottom: 50px;
+  text-align: center;
 }
 
 div.price_by_night {
-  /* background-color: blue; */
   color: #ff5a5f;
   border: 4px solid #ff5a5f;
   border-radius: 100%;
@@ -38,19 +35,20 @@ div.price_by_night {
   font-size: 30px;
   display: grid;
   align-items: center;
-  /* line-height: 60px; */
-  position: relative;
-  float: right;
-  top: -80px;
+  line-height: 60px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+
 }
+
 div.information {
   height: 80px;
   border-top: 1px solid #dddddd;
   border-bottom: 1px solid #dddddd;
-  /* width: 100%; */
   display: flex;
-  align-items: center; /* Center vertically */
-  justify-content: center; /* Center horizontally */
+  align-content: center;
+  justify-content: space-around;
 }
 div.max_guest,
 div.number_rooms,
@@ -64,6 +62,7 @@ div.number_bathrooms {
   background-repeat: no-repeat;
   background-position: center;
   background-position-y: 5px;
+  text-align: center;
 }
 
 .max_guest {
@@ -87,32 +86,23 @@ div.description {
 }
 
 .places .amenities {
-  list-style: decimal;
-  list-style-type: disc;
+  display: block;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  text-align: left;
+  margin-top: 40px;
+  width: 100%;
+  height: fit-content;
+  position: relative;
 }
 
-.places,
-div.review h3 {
-  font-size: 14px;
-}
-
-.places,
-div.reviews p {
-  font-size: 12px;
-}
-
-/* SIZE EACH IMAGE TO BE UNIFORM */
-.places .amenities ul,
-.reviews ul {
-  margin: 0px;
-  list-style: none;
-  padding: 0px;
-  /* list-style-image: url("../images/icon_bath.png"); */
-  /* list-style-position: outside; */
-}
-div.reviews,
-.places .amenities {
-  display: none;
+div.reviews {
+  display: block;
+  flex-direction: row;
+  justify-content: flex-start;
   margin-top: 10px;
   margin-bottom: 10px;
   font-size: 16px;
@@ -120,51 +110,86 @@ div.reviews,
   margin-top: 40px;
   width: 100%;
   position: relative;
-  padding-left: 0%;
-  list-style: none;
-  /* background-color: red; */
+}
+
+.places .grid {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.places article {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.places h1 {
+  font-size: 30px;
 }
 
 .places .amenities h2,
-div.reviews h2 {
-  border-bottom: #dddddd 1px solid;
+.reviews h2 {
+  text-align: left;
+  border-bottom: 1px solid #dddddd;
+  margin: 0px;
+  padding-bottom: 10px;
 }
 
-article:hover .amenities,
-article:hover div.reviews {
-  display: block;
-  flex-direction: row;
-  justify-content: flex-start;
+.places .amenities,
+.reviews {
+  margin-top: 40px;
+  padding: 0%;
 }
 
+.places .amenities ul,
+.reviews ul {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+.places .amenities li,
+.reviews li {
+  padding-left: 0px;
+}
+
+.reviews h3 {
+  margin: 0;
+  padding-top: 15px;
+  font-size: 14px;
+}
+
+.reviews p {
+  margin: 0;
+  font-size: 12px;
+  padding-top: 2px;
+}
 .places .amenities li {
   display: flex;
   flex-direction: row;
   justify-content: start;
   align-content: flex-start;
   align-items: center;
-  /* background-color: aqua; */
   padding-top: 0px;
   text-align: left;
-  padding-left: 20px;
 }
-/* original */
-/* .tv {
-	background: url("../images/icon_tv.png");
-}
-
-.wifi  {
-	background: url("../images/icon_wifi.png");
-}
-
-.pets {
-	background: url("../images/icon_pets.png");
-    background-color: #FF5A5F;
-} */
 
 .tv,
 .wifi,
-.pets {
+.pets,
+.bar,
+.bunkhouse,
+.campfire,
+.casino,
+.hangar,
+.helipad,
+.home-theater,
+.nature,
+.pool,
+.runway,
+.spa,
+.secluded {
   display: grid;
   width: 20px;
   height: 20px;
@@ -172,11 +197,6 @@ article:hover div.reviews {
   background-size: 20px 20px;
   margin-right: 20px;
 }
-
-/* .amenities ul {
-  list-style: none;
-  padding: 10;
-} */
 
 .places .amenities li {
   padding-left: 30px;
@@ -196,6 +216,39 @@ article:hover div.reviews {
 }
 .amenities .pool {
   background-image: url("../images/pool.png");
+}
+.amenities .home-theater {
+  background-image: url("../images/home-theater.png");
+}
+.amenities .helipad {
+  background-image: url("../images/helipad.png");
+}
+.amenities .runway {
+  background-image: url("../images/plane.png");
+}
+.amenities .hangar {
+  background-image: url("../images/plane.png");
+}
+.amenities .bunkhouse {
+  background-image: url("../images/bunkhouse.png");
+}
+.amenities .casino {
+  background-image: url("../images/casino.png");
+}
+.amenities .spa {
+  background-image: url("../images/spa.png");
+}
+.amenities .bar {
+  background-image: url("../images/bar.png");
+}
+.amenities .secluded {
+  background-image: url("../images/space.png");
+}
+.amenities .campfire {
+  background-image: url("../images/fire.png");
+}
+.amenities .nature {
+  background-image: url("../images/nature.png");
 }
 
 .amenities .pets {

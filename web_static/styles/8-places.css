@@ -1,10 +1,16 @@
 .places {
   text-align: center;
 }
-
+.places {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
 .places h1 {
   text-align: left;
   font-size: 30px;
+  width: 100%;
 }
 
 article {
@@ -16,34 +22,32 @@ article {
   display: inline-block;
   vertical-align: top;
   min-height: 200px;
+  position: relative;
 }
 
 article h2 {
-  /* background-color: violet; */
   font-size: 30px;
-  margin-top: 5px;
+  margin-top: 0px;
+  position: relative;
 }
 
-div.price_by_night {
-    /* background-color: blue; */
-    color: #ff5a5f;
-    border: 4px solid #ff5a5f;
-    border-radius: 100%;
-    min-width: 60px;
-    height: 60px;
-    font-size: 30px;
-    display: grid;
-    align-items:center;
-    /* line-height: 60px; */
-    position: relative;
-    float: right;
-    top: -80px;
+.price_by_night {
+  color: #ff5a5f;
+  border: 4px solid #ff5a5f;
+  border-radius: 100%;
+  min-width: 60px;
+  height: 60px;
+  font-size: 30px;
+  display: grid;
+  align-items: center;
+  position: absolute;
+  top: 5px;
+  right: 5px;
 }
 div.information {
   height: 80px;
   border-top: 1px solid #dddddd;
   border-bottom: 1px solid #dddddd;
-  /* width: 100%; */
   display: flex;
   align-items: center;
   justify-content: center;
