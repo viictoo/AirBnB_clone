@@ -39,7 +39,7 @@ div.price_by_night {
   position: absolute;
   top: 20px;
   right: 20px;
-
+  text-align: center;
 }
 
 div.information {
@@ -53,16 +53,24 @@ div.information {
 div.max_guest,
 div.number_rooms,
 div.number_bathrooms {
-  line-height: 140px;
   width: 100px;
   height: 100%;
-  display: inline-block;
-  align-items: center;
-  justify-content: center;
+  /* display: inline-block; */
+  /* align-items: center; */
+  /* justify-content: center; */
   background-repeat: no-repeat;
   background-position: center;
   background-position-y: 5px;
   text-align: center;
+
+  display: flex;
+  align-items: end;
+  justify-content: space-around;
+  text-align: center;
+  align-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  padding: 25px;
 }
 
 .max_guest {
@@ -111,7 +119,12 @@ div.reviews {
   width: 100%;
   position: relative;
 }
-
+.places .amenities,
+.reviews {
+  /* margin-top: 40px; */
+  padding: 0%;
+  margin-left: 0;
+}
 .places .grid {
   display: flex;
   flex-flow: row wrap;
@@ -137,11 +150,7 @@ div.reviews {
   padding-bottom: 10px;
 }
 
-.places .amenities,
-.reviews {
-  margin-top: 40px;
-  padding: 0%;
-}
+
 
 .places .amenities ul,
 .reviews ul {
@@ -259,12 +268,12 @@ div.reviews {
 }
 
 
-@media (max-width: 1000px) {
+@media (max-width: 768px) {
   .places h1 {
     margin: 0;
     margin-top: 10px;
     margin-bottom: 5px;
-    padding: 0;
+    padding: 20px 0;
     font-size: 25px;
   }
   .places article {
@@ -277,6 +286,7 @@ div.reviews {
   }
   .places .reviews h2 {
     text-align: left;
+    font-size: 16px;
   }
   .places .price_by_night {
     text-align: center;
@@ -284,12 +294,7 @@ div.reviews {
     right: 10px;
     font-size: 20px;
   }
-  div.information {
-    display: flex;
-    align-items: center;
-    align-content: center;
-    flex-direction: row;
-  }
+
   .places .amenities,
   .places .reviews {
     display: block;

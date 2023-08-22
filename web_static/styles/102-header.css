@@ -1,16 +1,19 @@
 header {
   background-color: white;
   height: 70px;
-  width: 100%;
+  width: 90%;
   border-bottom: 1px solid #cccccc;
   display: flex;
   align-items: center;
+  justify-content: flex-start;
 }
 
 .logo {
   max-width: 100%;
-  width: 100%;
-  height: 100%;
+  width: 140px;
+  height: 80%;
+  display: flex;
+  align-self: end;
   background-image: url("../images/logo.png");
   background-repeat: no-repeat;
   background-size: contain;
@@ -24,7 +27,6 @@ header {
   }
   .logo {
     height: 40px;
-    margin-left: 30%;
     width: 100%;
   }
 }
